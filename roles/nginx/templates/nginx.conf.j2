@@ -8,8 +8,8 @@ worker_processes  1;
 {% endblock %}
 
 {% if nginx_extra_conf_options %}
-    env VARIABLE;
-    include /etc/nginx/main.d/*.conf;
+     env VARIABLE;
+     include /etc/nginx/main.d/*.conf;
 {% endif %}
 
 {% block events %}
@@ -28,11 +28,11 @@ http {
 
     server_names_hash_bucket_size 64;
 
-    client_max_body_size 64;
+    client_max_body_size 64m;
 
-    log_format  main  '$remote_addr  $remote_user [$time_local] "$request" '
-    '$status $body_bytes_sent "$http_referer" '
-    '"$http_user_agent" "$http_x_forwarded_for"';
+    log_format  main    '$remote_addr - $remote_user [$time_local] "$request" '
+  '$status $body_bytes_sent "$http_referer" '
+  '"$http_user_agent" "$http_x_forwarded_for"';
 
     access_log  /var/log/nginx/access.log main buffer=16k;
 
@@ -45,7 +45,7 @@ http {
 
     server_tokens on;
 {% if nginx_proxy_cache_path %}
-    proxy_cache_path /var/cache/nginx keys_zone=cache:32ms;
+    proxy_cache_path /var/cache/nginx keys_zone=cache:32m;
 {% endif %}
 {% endblock %}
 
@@ -54,13 +54,12 @@ http {
 {% endblock %}
 
 {% if nginx_extra_http_options %}
-    proxy_buffering     off;
-    proxy_set_header    X-Real-IP $remote_addr;
-    proxy_set_header    X-Scheme  $scheme;
-    proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header    Host $http_host;
-
-
+    proxy_buffering    off;
+      proxy_set_header   X-Real-IP $remote_addr;
+      proxy_set_header   X-Scheme $scheme;
+      proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header   Host $http_host;
+      
 {% endif %}
 
 {% block http_upstream %}
