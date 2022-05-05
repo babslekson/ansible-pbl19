@@ -15,7 +15,7 @@
 - name: Import database file
   import_playbook: ../static-assignments/db.yml
 
-- hosts: Import webservers file
+- name: Import webservers file
   import_playbook: ../static-assignments/uat-webservers.yml
 
 - name: Import load balancer assignment
