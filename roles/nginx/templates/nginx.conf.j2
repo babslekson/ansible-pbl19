@@ -79,6 +79,16 @@ http {
 {% endfor %}
 {% endblock %}
 
+{% block server %}
+    server {
+        listen: 80
+        server_name loadbalancer;
+        location / {
+            proxy_pass http://myapp1;
+        }
+    }
+{% endblock %}
+
 {% block http_includes %}
     include /etc/nginx/conf.d/*.conf;
 {% if nginx_conf_path != nginx_vhost_path %}
