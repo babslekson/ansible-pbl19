@@ -1,16 +1,22 @@
 ---
-- name: Update web, nfs and db servers
+- name: Install ntp on web, nfs and db servers
   hosts: webservers, nfs, db
   remote_user: ec2-user
   become: true
   become_user: root
   tasks:
-    - name: Ensure wireshark is at the latest version
-      yum:
-        name: wireshark
-        state: latest
+    - name: Ensure ntp is installed
+      dnf: 
+        name: chrony
+        state: present
+    
+    - name: Ensure ntp is running
+      service: 
+        name: chronyd
+        state: started
+        enabled: true
 
-- name: Update LB server
+- name: Update and Install ntp on lb server
   hosts: lb
   remote_user: ubuntu
   become: true
@@ -19,8 +25,14 @@
     - name: Update apt repo
       apt: 
         update_cache: yes
-
-    - name: Ensure wireshark is at the latest version
+    
+    - name: Ensure ntp is installed
       apt:
-        name: wireshark
-        state: latest
+        name: ntp
+        state: present
+    
+    - name: Ensure ntp is running
+      service:
+        name: ntp
+        state: started
+        enabled: true
