@@ -1,5 +1,5 @@
 ---
-- name: Collate Variablesfrom env specific file, if it exists
+- name: Collate Variables from env specific file, if it exists
   hosts: all
   tasks: 
     - name: Looping through list of available files
