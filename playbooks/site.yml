@@ -2,25 +2,27 @@
 - name: Include dynamic variables
   hosts: all
 
-- name: Import common file
-  import_playbook: ../static-assignments/common.yml
-  tags:
-    - always
-
-- name: Include env-vars file
-  import_playbook: ../dynamic-assignments/env-vars.yml
-  tags:
-    - always
-
 - name: Import database file
+  hosts: db
   import_playbook: ../static-assignments/db.yml
 
-- name: Import webservers file
-  import_playbook: ../static-assignments/webservers.yml
-
 - name: Import load balancer assignment
-  import_playbook: ../static-assignments/lb.yml
-  when: load_balancer_is_required
+  hosts: nginx
+  import_playbook: ../static-assignments/nginx.yml
 
+- name: Artifactory assignment
+  hosts: artifactory
+  import_playbook: ../static-assignments/artifactory.yml
 
-  
+# - name: Import common file
+#   import_playbook: ../static-assignments/common.yml
+#   tags:
+#     - always
+
+# - name: Include env-vars file
+#   import_playbook: ../dynamic-assignments/env-vars.yml
+#   tags:
+#     - always
+
+# - name: Import webservers file
+#   import_playbook: ../static-assignments/webservers.yml  
