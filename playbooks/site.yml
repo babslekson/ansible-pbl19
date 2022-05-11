@@ -1,7 +1,4 @@
 ---
-- name: Include dynamic variables
-  hosts: all
-
 - name: Import database file
   hosts: db
   import_playbook: ../static-assignments/db.yml
