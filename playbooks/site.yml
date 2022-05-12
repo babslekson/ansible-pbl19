@@ -1,14 +1,11 @@
 ---
 - name: Import database file
-  hosts: db
   import_playbook: ../static-assignments/db.yml
 
 - name: Import load balancer assignment
-  hosts: nginx
   import_playbook: ../static-assignments/nginx.yml
 
 - name: Artifactory assignment
-  hosts: artifactory
   import_playbook: ../static-assignments/artifactory.yml
 
 # - name: Import common file
