@@ -1,12 +1,12 @@
 ---
-- name: Import database file
-  import_playbook: ../static-assignments/db.yml
+# - name: Import database file
+#   import_playbook: ../static-assignments/db.yml
 
-- name: Import load balancer assignment
-  import_playbook: ../static-assignments/nginx.yml
+# - name: Import load balancer assignment
+#   import_playbook: ../static-assignments/nginx.yml
 
-# - name: Artifactory assignment
-#   import_playbook: ../static-assignments/artifactory.yml
+- name: Artifactory assignment
+  import_playbook: ../static-assignments/artifactory.yml
 
 # - name: Import common file
 #   import_playbook: ../static-assignments/common.yml
