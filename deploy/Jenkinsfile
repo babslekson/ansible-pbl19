@@ -35,11 +35,11 @@ pipeline {
 			}
 		}
 
-		// stage('Run Ansible playbook') {
-		// 	steps {
-		// 		ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/dev.yml', playbook: 'playbooks/site.yml'
-		// 	}
-		// }
+		stage('Run Ansible playbook') {
+			steps {
+				ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/dev.yml', playbook: 'playbooks/site.yml'
+			}
+		}
 
 		stage('Running Ansible') {
 			steps {
