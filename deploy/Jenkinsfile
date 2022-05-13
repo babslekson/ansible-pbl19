@@ -5,9 +5,9 @@ pipeline {
 		ANSIBLE_CONFIG="${WORKSPACE}/deploy/ansible.cfg"
 	}
 
-	// parameters {
-	// 	string(name: 'inventory', defaultValue: 'dev', description: 'Inventory file for environment to deploy configuration')
-	// }
+	parameters {
+		string(name: 'inventory', defaultValue: 'dev', description: 'Inventory file for environment to deploy configuration')
+	}
 
 	stages {
 		
@@ -21,7 +21,7 @@ pipeline {
 
 		stage('Checkout SCM') {
 			steps {
-				git branch: 'feature/jenkinspipeline-stage', url: 'https://github.com/Horleryheancarh/ansible-config-mgt.git'
+				git branch: 'main', url: 'https://github.com/Horleryheancarh/ansible-config-mgt.git'
 			}
 		}
 
@@ -29,14 +29,23 @@ pipeline {
 			steps {
 				script {
 					sh 'echo "${WORKSPACE}"'
-					sh 'sed -i "3 a roles_path=${WORKSPACE}/roles" ${WORKSPACE}/deploy/ansible.cfg'
+					sh 'sed -i "3 a roles_path=${WORKSPACE}/roles" ${ANSIBLE_CONFIG}'
+					sh 'cat ${ANSIBLE_CONFIG}'
 				}
 			}
 		}
 
-		stage('Run Ansible playbook') {
+		// stage('Run Ansible playbook') {
+		// 	steps {
+		// 		ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/dev.yml', playbook: 'playbooks/site.yml'
+		// 	}
+		// }
+
+		stage('Running Ansible') {
 			steps {
-				ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/dev.yml', playbook: 'playbooks/site.yml'
+				script {
+					sh 'echo "Running Ansible"'
+				}
 			}
 		}
 
