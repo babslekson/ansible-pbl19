@@ -21,7 +21,7 @@ pipeline {
 
 		stage('Checkout SCM') {
 			steps {
-				git branch: 'feature/jenkinspipeline-stage', url: 'https://github.com/Horleryheancarh/ansible-config-mgt.git'
+				git branch: 'main', url: 'https://github.com/Horleryheancarh/ansible-config-mgt.git'
 			}
 		}
 
@@ -29,8 +29,8 @@ pipeline {
 			steps {
 				script {
 					sh 'echo "${WORKSPACE}"'
-					sh 'echo "${ANSIBLE_CONFIG}"'
 					sh 'sed -i "3 a roles_path=${WORKSPACE}/roles" ${ANSIBLE_CONFIG}'
+					sh 'cat ${ANSIBLE_CONFIG}'
 				}
 			}
 		}
