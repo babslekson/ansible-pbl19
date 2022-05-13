@@ -5,9 +5,9 @@ pipeline {
 		ANSIBLE_CONFIG="${WORKSPACE}/deploy/ansible.cfg"
 	}
 
-	// parameters {
-	// 	string(name: 'inventory', defaultValue: 'dev', description: 'Inventory file for environment to deploy configuration')
-	// }
+	parameters {
+		string(name: 'inventory', defaultValue: 'dev', description: 'Inventory file for environment to deploy configuration')
+	}
 
 	stages {
 		
