@@ -1,5 +1,6 @@
 ---
 - name: Load Balancer Set Up
   hosts: nginx
+  become: true
   roles:
     - nginx

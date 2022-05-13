@@ -2,7 +2,7 @@
 # tasks file for nginx
 - name: install nginx on the webserver
   yum:
-      name: httpd
+      name: nginx
       state: present
 
 

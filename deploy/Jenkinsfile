@@ -41,14 +41,6 @@ pipeline {
 			}
 		}
 
-		stage('Running Ansible') {
-			steps {
-				script {
-					sh 'echo "Running Ansible"'
-				}
-			}
-		}
-
 		stage('Cleanup') {
 			steps {
 				cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenUnstable: true, deleteDirs: true)
