@@ -1,6 +1,6 @@
 ---
-- name: Import database file
-  import_playbook: ../static-assignments/db.yml
+# - name: Import database file
+#   import_playbook: ../static-assignments/db.yml
 
 # - name: Import load balancer assignment
 #   import_playbook: ../static-assignments/nginx.yml
@@ -20,3 +20,6 @@
 
 # - name: Import webservers file
 #   import_playbook: ../static-assignments/webservers.yml  
+
+- name: Deploy The Todo Apllication
+  import_playbook: ../static-assignments/deployment.yml
