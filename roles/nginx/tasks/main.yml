@@ -1,8 +1,8 @@
 ---
 # tasks file for nginx
 - name: install nginx on the webserver
-  apt:
-      name: nginx
+  yum:
+      name: httpd
       state: present
 
 
@@ -13,7 +13,7 @@
      enabled: true
 
 - name: install PHP
-  apt:
+  yum:
     name:
       - php 
       - php-mysqlnd
