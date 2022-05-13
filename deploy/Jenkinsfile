@@ -29,14 +29,23 @@ pipeline {
 			steps {
 				script {
 					sh 'echo "${WORKSPACE}"'
-					sh 'sed -i "3 a roles_path=${WORKSPACE}/roles" ${WORKSPACE}/deploy/ansible.cfg'
+					sh 'echo "${ANSIBLE_CONFIG}"'
+					sh 'sed -i "3 a roles_path=${WORKSPACE}/roles" ${ANSIBLE_CONFIG}'
 				}
 			}
 		}
 
-		stage('Run Ansible playbook') {
+		// stage('Run Ansible playbook') {
+		// 	steps {
+		// 		ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/dev.yml', playbook: 'playbooks/site.yml'
+		// 	}
+		// }
+
+		stage('Running Ansible') {
 			steps {
-				ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/dev.yml', playbook: 'playbooks/site.yml'
+				script {
+					sh 'echo "Running Ansible"'
+				}
 			}
 		}
 
