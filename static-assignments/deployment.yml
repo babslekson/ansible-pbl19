@@ -59,15 +59,15 @@
     - name: unzip the artifacts
       unarchive:
        src: /home/ec2-user/php-todo
-       dest: /home/ec2-user/php-todo/
+       dest: /var/www/html
        remote_src: yes
 
-    - name: deploy the code
-      copy:
-        src: /home/ec2-user/php-todo/
-        dest: /var/www/html/
-        force: yes
-        remote_src: yes
+    # - name: deploy the code
+    #   copy:
+    #     src: /home/ec2-user/php-todo/
+    #     dest: /var/www/html/
+    #     force: yes
+    #     remote_src: yes
 
     - name: remove nginx default page
       file:
