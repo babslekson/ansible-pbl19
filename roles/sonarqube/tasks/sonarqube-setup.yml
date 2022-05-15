@@ -34,6 +34,11 @@
     path: /opt/sonarqube-7.9.3.zip
     state: absent
 
+- name: remove the extracted directory
+  file:
+    path: /opt/sonarqube-7.9.3/
+    state: absent
+
 - name: add user to run sonar
   shell: useradd -c "user to run SonarQube" -d /opt/sonarqube -g sonar sonar 
 
