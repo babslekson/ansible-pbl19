@@ -21,8 +21,8 @@
 # - name: Import webservers file
 #   import_playbook: ../static-assignments/webservers.yml  
 
-# - name: Deploy The Todo Apllication
-#   import_playbook: ../static-assignments/deployment.yml
+- name: Deploy The Todo Apllication
+  import_playbook: ../static-assignments/deployment.yml
 
-- name: Install SonarQube
-  import_playbook: ../static-assignments/sonar.yml
+# - name: Install SonarQube
+#   import_playbook: ../static-assignments/sonar.yml
