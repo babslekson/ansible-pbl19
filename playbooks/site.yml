@@ -1,28 +1,28 @@
 ---
-# - name: Import database file
-#   import_playbook: ../static-assignments/db.yml
+- name: Import database file
+  import_playbook: ../static-assignments/db.yml
 
-# - name: Import load balancer assignment
-#   import_playbook: ../static-assignments/nginx.yml
+- name: Import load balancer assignment
+  import_playbook: ../static-assignments/nginx.yml
 
-# - name: Artifactory assignment
-#   import_playbook: ../static-assignments/artifactory.yml
+- name: Artifactory assignment
+  import_playbook: ../static-assignments/artifactory.yml
 
-# - name: Import common file
-#   import_playbook: ../static-assignments/common.yml
-#   tags:
-#     - always
+- name: Import common file
+  import_playbook: ../static-assignments/common.yml
+  tags:
+    - always
 
-# - name: Include env-vars file
-#   import_playbook: ../dynamic-assignments/env-vars.yml
-#   tags:
-#     - always
+- name: Include env-vars file
+  import_playbook: ../dynamic-assignments/env-vars.yml
+  tags:
+    - always
 
-# - name: Import webservers file
-#   import_playbook: ../static-assignments/webservers.yml  
+- name: Import webservers file
+  import_playbook: ../static-assignments/webservers.yml  
 
 - name: Deploy The Todo Apllication
   import_playbook: ../static-assignments/deployment.yml
 
-# - name: Install SonarQube
-#   import_playbook: ../static-assignments/sonar.yml
+- name: Install SonarQube
+  import_playbook: ../static-assignments/sonar.yml
