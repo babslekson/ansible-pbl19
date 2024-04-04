@@ -1,28 +1,25 @@
----
-- name: Import database file
-  import_playbook: ../static-assignments/db.yml
-
-- name: Import load balancer assignment
+----
+- hosts: tag_Name_ACS_nginx
+- name: nginx assignment
   import_playbook: ../static-assignments/nginx.yml
 
-- name: Artifactory assignment
-  import_playbook: ../static-assignments/artifactory.yml
+- hosts: tag_Name_ACS_tooling 
+- name: tooling assignment
+  import_playbook: ../static-assignments/tooling.yml
 
-- name: Import common file
-  import_playbook: ../static-assignments/common.yml
-  tags:
-    - always
+- hosts: tag_Name_ACS_wordpress
+- name: wordpress assignment
+  import_playbook: ../static-assignments/wordpress.yml
 
-- name: Include env-vars file
-  import_playbook: ../dynamic-assignments/env-vars.yml
-  tags:
-    - always
+- hosts: tag_Name_ACS_jenkins
+- name: jenkins assignment
+  import_playbook: ../static-assignments/jenkins.yml  
 
-- name: Import webservers file
-  import_playbook: ../static-assignments/webservers.yml  
+- hosts: tag_Name_ACS_artifactory
+- name: artifactory assignment
+  import_playbook: ../static-assignments/jfrog.yml
 
-- name: Deploy The Todo Apllication
-  import_playbook: ../static-assignments/deployment.yml
-
-- name: Install SonarQube
+- hosts: tag_Name_ACS_sonarqube
+  user: ubuntu
+- name: sonarqube assignment
   import_playbook: ../static-assignments/sonar.yml

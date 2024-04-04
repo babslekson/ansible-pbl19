@@ -2,7 +2,7 @@ plugin: amazon.aws.aws_ec2
 aws_profile: default
 
 regions:
-  - "us-east-2"
+  - "us-east-1"
 
 strict: False
 
@@ -12,13 +12,13 @@ keyed_groups:
 
 filters:
   tag:Name:
-    - yheancarh-bastion
-    - yheancarh-nginx
-    - yheancarh-tooling
-    - yheancarh-wordpress
-    - yheancarh-sonarqube
-    - yheancarh-artifactory
-    - yheancarh-jenkins
+    - ACS-bastion
+    - ACS-nginx
+    - ACS-tooling
+    - ACS-wordpress
+    - ACS-sonarqube
+    - ACS-artifactory
+    - ACS-jenkins
   instance-state-name : running
   
 hostnames:

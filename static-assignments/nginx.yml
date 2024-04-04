@@ -1,6 +1,5 @@
 ---
-- name: Load Balancer Set Up
-  hosts: nginx
+- hosts: tag_Name_ACS_nginx
   become: true
   roles:
     - nginx
